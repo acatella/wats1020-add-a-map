@@ -1,5 +1,7 @@
 
 $(document).ready(function() {
+
+  //Map embed
   var map = L.map('map-container').setView([46.851249, -121.764438],13);
 
   var satLayer = L.tileLayer('http://{s}.mqcdn.com/tiles/1.0.0/sat/{z}/{x}/{y}.png', {
@@ -40,4 +42,22 @@ $(document).ready(function() {
     color: "red",
   }).addTo(map);
   bearCountry.bindPopup('Careful. This here\'s bear country.');
+
+
+  //enable header buttons to work
+  $('.nav-item').click(function(e) {
+    var button = e.target;
+    var buttonText = button.innerHTML;
+    buttonText = buttonText.toLowerCase();
+
+    //Smooth scrolling
+    // $(".nav-item").click(function() {
+      // $.smoothScroll({
+      //   scrollElement: $(document.body),
+      //   scrollTarget: "#about"
+      // });
+    // });
+
+    $("[aria-controls='"+buttonText+"']").trigger("click");
+  });
 });

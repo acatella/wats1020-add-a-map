@@ -12,7 +12,7 @@ In order to successfully complete this assignment, you will need to fulfill the 
 * Enhance the styling as indicated in several places throughout the `index.html` file.
 * Add a map to the **Map** section as indicated in the `index.html` and `js/main.js` files.
 
-**NOTE:** You can refer to the `target_layout_wireframe.png` file in the root of this repository to help clarify the goal layout we are trying to create. 
+**NOTE:** You can refer to the `target_layout_wireframe.png` file in the root of this repository to help clarify the goal layout we are trying to create.
 
 ## Stretch Goals
 If you wish to extend or enhance your experience this week, try going for one or more of the following goals:
@@ -23,5 +23,3 @@ If you wish to extend or enhance your experience this week, try going for one or
 * Create a "smooth scroll" effect using jQuery so when a user clicks the navigation they are smoothly transported to the proper place on the page.
 * Make great use of icons (`glyphicons`) you have available through Bootstrap (or add FontAwesome if you need more).
 * Make everything a lot more beautiful with your own design concept.
-
-
