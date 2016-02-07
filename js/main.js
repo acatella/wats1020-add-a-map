@@ -1,21 +1,43 @@
-/* Begin by adding your on ready handler here, and then create the
-   rest of your functions inside the on ready handler.
 
-   (Note that you do not need to manually call Bootstrap functions in
-   your Javascript because Bootstrap will automatically recognize your
-   HTML structures and invoke the proper JS code accordingly. Be sure
-   to reference the Bootstrap documentation.)
-*/
+$(document).ready(function() {
+  var map = L.map('map-container').setView([46.851249, -121.764438],13);
 
-// TODO: Inside of your on ready handler, invoke the Leaflet.js library
-// to draw a map in your `#map-container` div.
+  var satLayer = L.tileLayer('http://{s}.mqcdn.com/tiles/1.0.0/sat/{z}/{x}/{y}.png', {
+    attribution: 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
+    subdomains:['otile1','otile2','otile3','otile4']
+  });
 
-// TODO: Add 2 layers to your map you have visuals. Use the Open Street Maps
-// tiles served through the MapQuest CDN. Consult this example to set up
-// the map tiles layers:
+  var drawLayer = L.tileLayer('http://{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png', {
+    attribution: 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
+    subdomains:['otile1','otile2','otile3','otile4']
+  });
 
+  var mpLayers = {
+    "Satellite": satLayer,
+    "Drawn Map": drawLayer
+  }
 
-// TODO: Customize that Map to show markers with popups at no fewer than 3
-// interesting locations. (You'll need to figure out the latitude/longitude for
-// these locations using a mapping tool such as Google Maps.)
+  L.control.layers(mpLayers).addTo(map);
+  satLayer.addTo(map);
 
+  //marker layers
+  var marker = L.marker([46.851249, -121.764438]).addTo(map);
+  marker.bindPopup('Mt. Rainier\'s summit. Only the brave make it here.');
+
+  //polygon layer
+  var avalancheZone = L.polygon([
+    [46.868029, -121.749300],
+    [46.876789, -121.737155],
+    [46.862947, -121.694200],
+    [46.850282, -121.724704]
+  ], {
+    color: 'green'
+  }).addTo(map);
+  avalancheZone.bindPopup('Great ski area. Lots of avalanches, but worth it.');
+
+  //circle for bear country
+  var bearCountry = L.circle([46.862474, -121.856354], 500, {
+    color: "red",
+  }).addTo(map);
+  bearCountry.bindPopup('Careful. This here\'s bear country.');
+});
